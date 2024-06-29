@@ -59,7 +59,7 @@
 > 28.93999999999998
 
 // We can calculate in cents instead of dollars
-(2095 + 799) / 100
+(2065 + 799) / 100
 > 28.94
 
 // Round a number
