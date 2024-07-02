@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cart Quantity</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <button onclick="
+            console.log(`Cart Quantity: ${cartQuantity}`);
+            ">Show Quantity</button>
+
+        <button onclick="
+            cartQuantity ++;
+            console.log(`Cart Quantity: ${cartQuantity}`);
+        ">Add to Cart</button>
+
+        <button onclick="
+            cartQuantity += 2;
+            console.log(`Cart Quantity: ${cartQuantity}`);
+        ">+2</button>
+
+        <button onclick="
+            cartQuantity += 3;
+            console.log(`Cart Quantity: ${cartQuantity}`);
+        ">+3</button>
+
+        <button onclick="
+            cartQuantity = 0;
+            console.log('Cart was reset.');
+            console.log(`Cart Quantity: ${cartQuantity}`);
+        ">Reset Cart</button>
+
+        <script>
+            // We can't have spaces in the variable names, so we use camelCase
+            // camelCase - cartQuantity
+            // PascalCase - CartQuantity
+            // kebab-case - cart-quantity used in HTML and CSS
+            // snake_case - cart_quantity used in other languajes
+           let cartQuantity = 0;
+        </script>
+    </body>
+</html>
