@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Booleans</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <script>
+            // Booleans are another type of value that can only be true or false
+            console.log(3 > 5);
+            console.log(typeof 'true');
+            // string
+            console.log(typeof true);
+            // boolean
+
+            // We use comparision operators for boolean > < >= <= !== === ==
+            // == : Convert values in the same type
+            console.log(5 == '5.00'); // true
+            // === : Don't convert in the same type
+            console.log(5 === '5.00'); // false
+
+            // If-Statements : Allow us to write multiple options and wheather or not to run it
+            if (false) {
+                console.log('hello');
+            } else {
+                console.log('else');
+            }
+
+            // If (condition), then we can have multiple branches
+            const age = 15;
+            if (age >= 16) {
+                console.log('You can drive');
+                console.log('Congrats');
+            } else if (age >= 14) {
+                console.log('Almost there');
+            }
+            else {
+                console.log('You can not drive');
+            }
+
+            // Logical operators
+            // AND &&
+            // OR ||
+            // NOT !
+
+            //Truthy and Falsy Values
+            if (5) { //Truthy
+                console.log('truthy');
+            }
+            if (0) { //Falsy
+                console.log('truthy');
+            }
+            // Falsy values: false, 0, '', NaN, undefined, null
+            // They work like shorcuts
+
+            const cartQuantity = 5;
+            if (cartQuantity > 0) { // true - false
+                console.log('cart has products');
+            }
+            if (cartQuantity) { // truthy - falsy
+                console.log('cart has products');
+            }
+
+            // They work with logical operators
+            console.log(!0);
+
+            // NaN: Non a number
+            console.log('text' / 5);
+
+            // undefined: doesn't have a value 
+            let variable1;
+            console.log(variable1);
+
+            // Shortcuts for If-Statements
+            // Ternary Operator ?
+            // It can be saved in a variable
+            const result = true ? 'truthy' : 'falsy';
+            console.log(result);
+            /* Shortcut
+            let result;
+
+            if (condition) {
+                result = 'truthy';
+            } else {
+                result = 'falsy';
+            }
+            */
+
+            // Guard Operator &&
+            const message = false && 'hello';
+            /* Shortcut
+            let message;
+
+            if (condition) {
+                message = 'hello';
+            }
+            */
+
+            // Default Operator ||
+            const currency = 'EUR' || 'USD';
+            /* Shortcut 
+            let currency;
+
+            if (!condition) {
+                currency = 'USD';
+            }
+            */
+        </script>
+    </body>
+</html>
