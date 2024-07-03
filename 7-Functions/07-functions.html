@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Functions</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <script>
+            // Function let use reuse code
+            function function1() {
+                console.log('hello');
+                console.log(2 + 2);
+            }
+            // Runs the code inside the brackets
+            function1();
+
+            // Rules for function names are the same as variables names
+            // Parameters allow us to put a value into de function
+            // We can add a default value to the parameter with a =
+             function calculateTax(cost, taxPercent = 0.1) {
+                console.log(cost * taxPercent);
+             }
+             calculateTax(2000, 0.2);
+             calculateTax(5000);
+
+             // If we dont send one parameter, the function will take it as undefined
+        </script>
+    </body>
+</html>
