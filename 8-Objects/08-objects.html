@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Objects</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <script>
+            // Object let us group multiple values together
+            const product = {
+                // Inside we have property-value pairs
+                name: 'socks',
+                price: 1090
+            };
+            console.log(product);
+
+            // We can acces the values individually
+            console.log(product.name);
+            console.log(product.price);
+            // We can change the values
+            product.name = 'cotton socks';
+            console.log(product);
+
+            // We can add new properties too
+            product.newProperty = true;
+            console.log(product);
+            // We can delete properties too
+            delete product.newProperty;
+            console.log(product);
+
+            // Objects make the code more organized, so we can group and use multiple values together
+
+
+            const product2 = {
+                name: 'shirt',
+                // Inner objects
+                rating: {
+                    stars: 4.5,
+                    count: 87
+                },
+                // Functions are other types of values that we can put inside objects
+                // This is called method
+                fun: function function1() {
+                    console.log('function inside object');
+                }
+            };
+            // Dot notation : Use by default
+            console.log(product2.name);
+            // Another way of acces values inside object
+            // Bracket notation : For properties that doesnt work with dot notation
+            console.log(product2['name']);
+
+            // To acces inner objects value
+            console.log(product2.rating.count);
+
+            // To run the method
+            product2.fun();
+            // Both are methods, they are Built-in Objects that are already inside the languaje
+            console.log();
+            Math.random();
+
+
+            // JSON: JavaScript Object Notation
+            // Similar to JS Object but less features
+            // - All needs " "
+            // - Not functions
+            // JSON is more universal, we use it when we send things to other PC or to storage
+            // From JS to JSON
+            console.log(JSON.stringify(product2));
+            // From JSON to JS
+            const jsonString = JSON.stringify(product2);
+            console.log(JSON.parse(jsonString));
+
+
+            // Local storage: Another way to storage variales do they don't delete when we refresh the page
+            // We save the 'name' and then the 'value', it can only be a string
+            localStorage.setItem('message', 'hello');
+            // Get the value out of local storae
+            localStorage.getItem('message');
+            
+
+            // null is simila to undefined
+            // - null for something intentionally empty
+            // They work the same way
+
+
+            // Strings also have properties and methods
+            console.log('hello'.length);
+            console.log('hello'.toUpperCase());
+            // JS automatically convert the string into a object, it is called Auto-boxing
+            // Auto-boxing works with boolean and numbers
+
+            // Object are references that points to the properties in memory
+            const object1 = {
+                message: 'hello'
+            };
+            // We are copying the reference, not the complete object with the properties
+            const object2 = object1;
+
+            // With objects we can change the properties even if they are const
+            object1.message = 'Good job!';
+            console.log(object1);
+
+            console.log(object2);
+
+            // We can't compare objects
+            const object3 = {
+                message: 'Good job!'
+            }
+            // They are not equal even when they have the same values, they have different references
+            console.log(object3 === object1);
+            // They are equal if they have the same reference
+            console.log(object2 === object1);
+
+
+            // Shortcuts
+            const object4 = {
+                message: 'Good job!',
+                price: 799
+            };
+            // If the variable name and the propertie name are the same
+            // const message = object4.message
+
+            // Destructuring, it can be with multiple properties
+            const { message, price } = object4;
+            console.log(message);
+            console.log(price);
+
+            const object5 = {
+                // Shorthand property, if we want to save a variable into a property with the same name
+                /*
+                message: message
+                */
+                message,
+
+                // Shorthand method, function name is not needed
+                /*
+                method: function function1() {
+                    console.log('method');
+                }
+                */
+                method() {
+                    console.log('method');
+                }
+            };
+            console.log(object5);
+
+            object5.method();
+
+        </script>
+    </body>
+</html>
