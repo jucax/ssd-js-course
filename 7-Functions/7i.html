@@ -1,0 +1,49 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about JS functions to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 7i</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <script>
+            function convertLength(length, from, to) {
+                let result = 0;
+                if (from != 'km' || from != 'miles' || from != 'ft' ) {
+                    return `Invalid unit: ${from}`
+                } else if (to != 'km' || to != 'miles' || to != 'ft' ) {
+                    return `Invalid unit: ${to}`
+                }
+
+                if (from === 'km' && to === 'miles') {
+                    result = length / 1.6;
+                } else if (from === 'miles' && to === 'km') {
+                    result = length * 1.6;
+                } else if (from === 'km' && to === 'ft') {
+                    result = length * 3281;
+                } else if (from === 'ft' && to === 'km') {
+                    result = length / 3281;
+                } else if (from === 'miles' && to === 'ft') {
+                    result = length * 5280;
+                } else if (from === 'ft' && to === 'miles') {
+                    result = length / 5280;
+                } else if ((from === 'km' && to === 'km') || (from === 'miles' && to === 'miles') || (from === 'ft' && to === 'ft')) {
+                    result = length;
+                }
+                return `${result} ${to}`;
+            }
+
+            console.log(convertLength(50, 'miles', 'km'));
+            console.log(convertLength(32, 'km', 'miles'));
+            console.log(convertLength(50, 'km', 'km'));
+            console.log(convertLength(5, 'miles', 'km'));
+            console.log(convertLength(5, 'miles', 'ft'));
+            console.log(convertLength(5, 'km', 'ft'));
+            console.log(convertLength(16405, 'ft', 'km'));
+        </script>
+    </body>
+</html>

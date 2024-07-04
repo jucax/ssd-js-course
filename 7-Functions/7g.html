@@ -1,0 +1,31 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about JS functions to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 7g</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <script>
+            function convertLength(length, from, to) {
+                let result = 0;
+                if (from === 'km' && to === 'miles') {
+                    result = length / 1.6;
+                } else if (from === 'miles' && to === 'km') {
+                    result = length * 1.6;
+                } else if ((from === 'km' && to === 'km') || (from === 'miles' && to === 'miles')) {
+                    result = length;
+                }
+                return `${result} ${to}`;
+            }
+
+            console.log(convertLength(50, 'miles', 'km'));
+            console.log(convertLength(32, 'km', 'miles'));
+            console.log(convertLength(50, 'km', 'km'));
+        </script>
+    </body>
+</html>
