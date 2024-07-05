@@ -1,0 +1,56 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about JS objects to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 8e</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <script>
+        const product1 = {
+            name: 'basketball',
+            price: 2095
+        };
+        const product2 = {
+            name: 'soccer',
+            price: 2095
+        };
+        const product3 = {
+            name: 'soccer',
+            price: 2095
+        };
+
+        console.log(product1);
+
+        product1.price += 500;
+        console.log(product1);
+
+        product1['delivery-time'] = '3 days';
+        console.log(product1);
+
+        function comparePrice(product1, product2) {
+            if (product1.price < product2.price) {
+                return product1;
+            } else {
+                return product2;
+            }
+        }
+
+        console.log(comparePrice(product1, product2));
+
+        function isSameProduct(product1, product2) {
+            if ((product1.price === product2.price) && (product1.name === product2.name)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        console.log(isSameProduct(product2, product3));
+        </script>
+    </body>
+</html>
