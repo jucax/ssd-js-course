@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <button>hello</button>
+
+        <button class="js-button">Second button</button>
+
+        <script>
+            // DOM is a built in object as Math or Console
+            // document.body.innerHTML = 'hello';
+            
+            // document - object
+            // body - object
+            // innerHTML - property
+
+            // document is link with the webpage, it model the page, it is the DOM
+            document.title = 'Good job!';
+
+            // document is a normal object with more objects and properties inside
+            console.log(document.title);
+            // Takes the <body> element
+            console.log(document.body); 
+
+            // With this we can have HTML elements inside JS
+            // DOM converts the HTML elements to JS objects
+            console.log(typeof document.body);
+            
+            // We can change the HTML inside with innerHTML
+            console.log(document.body.innerHTML);
+            // document.body.innerHTML = '<button>Good job!</button>';
+
+            // We can get any element and put in in JS
+            console.log(document.querySelector('button'));
+            // It will get the first button element in the page
+            document.querySelector('button').innerHTML ='Changed';
+            // We can change specific elements
+
+            // We can use classes to refer to elements
+            const buttonElement = document.querySelector('.js-button');
+            // We can save the elements in variables
+            console.log(buttonElement);
+
+            // Window object: represent the browser
+            // document, console, popups is inside window object
+            window.document
+            window.console.log
+            window.alert
+            // We dont have to type window, because JS do it automatically
+
+        </script>
+    </body>
+</html>
