@@ -1,0 +1,27 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about JS DOM to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 9d</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <input class="input" placeholder="Name">
+        <button onclick="
+            printName();
+        " class="submit-button">Submit</button>
+        <p class="result"></p>
+
+        <script>
+            function printName() {
+                const input = document.querySelector('.input');
+                const text = input.value;
+                document.querySelector('.result').innerHTML = `Your name is: ${text}`;
+            }
+        </script>
+    </body>
+</html>

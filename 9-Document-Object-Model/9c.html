@@ -1,0 +1,29 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about JS DOM to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 9c</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <button onclick="
+            printResult('heads');
+        " class="button-heads">heads</button>
+
+        <button onclick="
+            printResult('tails');
+        " class="button-tails">tails</button>
+
+        <p class="result"></p>
+
+        <script>
+            function printResult(result) {
+                document.querySelector('.result').innerHTML = `You chose: ${result}`;
+            }
+        </script>
+    </body>
+</html>
