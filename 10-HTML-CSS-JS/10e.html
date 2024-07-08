@@ -1,0 +1,51 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about HTML, CSS and JS to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 10e</title>
+        <style>
+            .gaming-button {
+                background-color: black;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 6px;
+                margin-right: 14px;
+            }
+
+            .is-toggled {
+                background-color: lightgray;
+                color: black;
+            }
+        </style>
+    </head>
+    <body>
+
+        <button onclick="
+            const buttonElement = document.querySelector('.js-gaming-button');
+            toggleButton(buttonElement);
+        " class="gaming-button js-gaming-button">Gaming</button>
+
+        <button onclick="
+            const buttonElement2 = document.querySelector('.js-music-button');
+            toggleButton(buttonElement2);
+        " class="gaming-button js-music-button">Music</button>
+
+        <button onclick="
+            const buttonElement3 = document.querySelector('.js-tech-button');
+            toggleButton(buttonElement3);
+        " class="gaming-button js-tech-button">Tech</button>
+
+        <script>
+            function toggleButton(buttonElement) {
+                if (!buttonElement.classList.contains('is-toggled')) {
+                    buttonElement.classList.add('is-toggled');
+                } else {
+                    buttonElement.classList.remove('is-toggled');
+                }
+            }
+
+        </script>
+    </body>
+</html>
