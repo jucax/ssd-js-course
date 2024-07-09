@@ -1,0 +1,37 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about JS arrays and loops to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 11m</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <script>
+            function minMax(nums) {
+                let minMax = {
+                    min: nums[0],
+                    max: nums[0]
+                };
+                if (nums.length === 0) {
+                        minMax.min = null;
+                        minMax.max = null;
+                    } 
+                for (let i = 0; i < nums.length; i++) {
+                    if (nums[i] < minMax.min ) {
+                        minMax.min = nums[i];
+                    }
+                    if (nums[i] > minMax.max ) {
+                        minMax.max = nums[i];
+                    }
+                }
+                return minMax;
+            }
+
+            console.log(minMax([3]));
+        </script>
+    </body>
+</html>

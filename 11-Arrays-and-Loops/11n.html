@@ -1,0 +1,30 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about JS arrays and loops to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 11n</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <script>
+            function countWords(words) {
+                const strings = {};
+                for (let i = 0; i < words.length; i++) {
+                    const word = words[i];
+                    if (!strings[word]) { // If that property doesn't exists
+                        strings[word] = 1; // Then we create the property and add 1
+                    } else { // Else it already exists
+                        strings[word] += 1; // We access the property and increment by 1
+                    }
+                }
+                return strings;
+            }
+
+            console.log(countWords(['apple', 'grape', 'apple', 'apple']));
+        </script>
+    </body>
+</html>
