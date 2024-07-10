@@ -87,6 +87,58 @@
             // 2. Generate the HTML
             // 3. Make it interactive
 
+            // Arrays are references as objects
+            const array1 = [1, 2, 3];
+            // Both variables can point to the same array
+            // const array2 = array1;
+            // This create a copy of the values with different references
+            const array2 = array1.slice();
+            array2.push(4);
+            console.log(array1);
+            console.log(array2);
+            
+            // Destructing allow us to save each value in a different variable without using the index
+            const [firstValue, secondValue, lastValue] = [1, 2, 3];
+
+            // Loops
+            for (let i = 1; i <= 10; i++) {
+                if (i % 3 === 0) { // Divisible by three
+                    // It skip one iteration of the loop
+                    continue;
+                }
+                console.log(i);
+                if (i === 8) {
+                    // It stop the loop
+                    break;
+                }
+            }
+
+            let x = 1;
+            while (x <= 10) {
+                if (x % 3 === 0) {
+                    // If we use continue in while, we need to increment before the continue
+                    x++;
+                    continue;
+                }
+                console.log(x);
+                x++;
+            }
+
+            // We can use loops inside functions as well
+            function doubleArray(nums2) {
+                const numsDouble2 = [];
+                for (let i = 0; i < nums2.length; i++) {
+                    const num = nums2[i];
+                    if (num === 0) {
+                        break;
+                    }
+                    numsDouble2.push(num * 2);
+                }
+                return numsDouble2;
+            }
+            console.log(doubleArray([1, 1, 3]));
+
+
         </script>
     </body>
 </html>
