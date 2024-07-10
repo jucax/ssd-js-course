@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Advanced functions</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+
+        <script>
+            // This 
+            // Here we can do Hoisting which means we can call the function before we declare it
+            greeting();
+           function greeting() {
+            console.log('hello');
+           }
+           // Is the same as this
+           var greeting = function() {
+            console.log('hello');
+           };
+
+           greeting();
+           // Functions are valueas are numbers, strings or booleans
+           const num = 2;
+           // We can save functions inside variables
+           // When we use a variable we dont need a function name, and make if anonymous function
+           const function1 = function() {
+            console.log('hello2');
+           };
+
+           console.log(function1);
+           console.log(typeof function1);
+           function1();
+
+           // Functions can be saved inside objects, and become a method
+           const object1 = {
+            num: 2,
+            // We can use it as anonymous
+            fun: function () {
+                console.log('hello3');
+            }
+           };
+           object1.fun();
+
+            // We knew that we can pass values to functions as parameters
+           function display(param) {
+            console.log(param);
+           }
+           display(2);
+
+            // We can also pass functions inside functions as parameters
+           function run(param) {
+            param();
+           }
+           run(function() {
+            console.log('hello4');
+           });
+
+           // setTimeout is a Built in function, it takes a function that we want to run in the future, and how long to wait in miliseconds
+           setTimeout(function() {
+            console.log('timeout');
+           }, 3000);
+           // Here JS is Asynchronous because it doesn't wait for setTimeout to finish before it starts the next line
+           console.log('next line');
+
+           // setTimeout doesn't block our code while the timing is runnis in second plane
+
+           // setInverval takes the same parameters as setTimeout, but it will keep running the function every certain time
+           setInterval(function() {
+            console.log('interval');
+           }, 3000);
+
+           console.log('next line 2')
+
+           // Another way to loop throught an array is with the method forEach()
+           // For each value it send it as parameter to run de function
+           [
+            'make dinner', 
+            'wash dished', 
+            'watch youtube'
+           ].forEach(function(value, index) {
+            if (value === 'wash dishes') {
+                // return works as continue in for loops
+                return;
+            }
+            console.log(index);
+            console.log(value);
+           });
+
+           //forEach() is prefered than the for loop, is more redable and include another functions
+           // There is no break in forEach, if we need break we should use for loops
+
+        </script>
+    </body>
+</html>
