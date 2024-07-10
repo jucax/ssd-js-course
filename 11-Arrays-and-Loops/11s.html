@@ -1,0 +1,29 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about JS arrays and loops to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 11s</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <script>
+            function removeEgg(foods) {
+                const updatedFoods = [];
+                let eggsRemoved = 0;
+                for (let i = 0; i < foods.length; i++) {
+                    if (foods[i] === 'egg' && eggsRemoved < 2) {
+                        eggsRemoved++;
+                        continue;
+                    }
+                    updatedFoods.push(foods[i]);
+                }
+                return updatedFoods;
+            } 
+            console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']));
+        </script>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about JS arrays and loops to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 11q</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <script>
+            function findIndex(array, word) {
+                let index = -1;
+                for (let i = 0; i< array.length; i++) {
+                    if (array[i] === word) {
+                        index = i;
+                        break;
+                    }
+                }
+                console.log(index);
+            }
+            findIndex(['green', 'red', 'blue', 'red'], 'yellow');
+        </script>
+    </body>
+</html>

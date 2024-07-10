@@ -130,7 +130,8 @@
                 for (let i = 0; i < nums2.length; i++) {
                     const num = nums2[i];
                     if (num === 0) {
-                        break;
+                        // We can end early, is an alternative of break
+                        return numsDouble2;
                     }
                     numsDouble2.push(num * 2);
                 }

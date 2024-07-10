@@ -1,0 +1,39 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about JS arrays and loops to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 11w</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <script>
+            function findIndex(array, word) {
+                let index = -1;
+                for (let i = 0; i< array.length; i++) {
+                    if (array[i] === word) {
+                        index = i;
+                        break;
+                    }
+                }
+                return index;
+            }
+            findIndex(['green', 'red', 'blue', 'red'], 'yellow');
+
+            function unique(array) {
+                const result = [];
+                for (let i = 0; i < array.length; i++) {
+                    const word = array[i];
+                    if (findIndex(result, word) === -1) {
+                        result.push(word);
+                    }
+                }
+                return result;
+            }
+            console.log(unique(['green', 'red', 'blue', 'red']));
+        </script>
+    </body>
+</html>

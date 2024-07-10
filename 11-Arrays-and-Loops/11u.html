@@ -1,0 +1,31 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about JS arrays and loops to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 11u</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <script>
+            function removeEgg(foods) {
+                const updatedFoods = [];
+                let eggsRemoved = 0;
+                const foodCopy = foods.slice();
+                const reversedFood = foodCopy.reverse();
+                for (let i = 0; i < reversedFood.length; i++) {
+                    if (reversedFood[i] === 'egg' && eggsRemoved < 2) {
+                        eggsRemoved++;
+                        continue;
+                    }
+                    updatedFoods.push(reversedFood[i]);
+                }
+                return updatedFoods.reverse();
+            } 
+            console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']));
+        </script>
+    </body>
+</html>

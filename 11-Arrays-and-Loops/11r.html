@@ -1,0 +1,27 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about JS arrays and loops to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 11r</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <script>
+            function removeEgg(foods) {
+                const updatedFoods = [];
+                for (let i = 0; i < foods.length; i++) {
+                    if (foods[i] === 'egg') {
+                        continue;
+                    }
+                    updatedFoods.push(foods[i]);
+                }
+                return updatedFoods;
+            } 
+            console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']));
+        </script>
+    </body>
+</html>
