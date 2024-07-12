@@ -1,0 +1,33 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about JS advanced functions to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 12h</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <button class="js-button" onclick="
+            messages ++; 
+        ">Add</button>
+
+        <button class="js-button" onclick="
+            messages --;   
+        ">Remove</button>
+
+
+        <script>
+            let messages = 2;
+            setInterval(function() {
+                if (document.title === 'App') {
+                    document.title = `(${messages}) New messages`;
+                } else {
+                    document.title = 'App';
+                }
+            }, 1000);
+        </script>
+    </body>
+</html>
