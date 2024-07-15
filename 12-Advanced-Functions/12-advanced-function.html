@@ -159,6 +159,30 @@
             }
            };
 
+
+            // .filter(): This function will return a boolean value, but it just keep the value in the array if the function return true
+            console.log([1, -3, 5].filter((value, index) => {
+                /*
+                if (value >= 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+                */
+                return value >= 0;
+            }));
+            
+            // .map(): This function will transform the array, so it change each value for the return result of the function
+            console.log([1, 1, 3].map((value, index) => {
+                return value * 2;
+            }));
+
+            // We can use arrow function shortcuts
+            console.log([1, 1, 3].map(value => { return value * 2; }));
+
+
+            // Closure means that the parameters of a function will be able to access just inside that function
+
         </script>
     </body>
 </html>

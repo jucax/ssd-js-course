@@ -26,6 +26,29 @@ function autoPlay() {
     }   
 }
 
+// Dont run the function by itself, we need arrow function and then the function
+document.querySelector('.js-rock-button').addEventListener('click', () => {
+    playGame('rock');
+});
+document.querySelector('.js-paper-button').addEventListener('click', () => {
+    playGame('paper');
+});
+document.querySelector('.js-scissors-button').addEventListener('click', () => {
+    playGame('rock');
+});
+
+// We can use it to play games with the keyboard
+// Event listener save the event as a parameter of the arrow function
+document.body.addEventListener('keydown', (event) => {
+    if (event.key === 'r') {
+        playGame('rock');
+    } else if (event.key === 'p') {
+        playGame('paper');
+    } else if (event.key === 's') {
+        playGame('scissors');
+    }
+});
+
 function playGame(playerMove) {
     const computerMove = pickComputerMove();
 
