@@ -10,9 +10,11 @@ updateScoreElement();
 let isAutoPlaying = false;
 let intervalId;
 
+// Here we could use arrow function, but this wont allow us to hoisting, and it is also less redable
+// const autoPlay = () => { }
 function autoPlay() {
     if (!isAutoPlaying) {
-        intervalId = setInterval(function() {
+        intervalId = setInterval(() => {
             const playerMove = pickComputerMove();
             playGame(playerMove);
         }, 1000);

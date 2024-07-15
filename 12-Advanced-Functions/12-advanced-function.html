@@ -8,7 +8,28 @@
     </head>
     <body>
 
+        <button onclick="" class="js-button">Click</button>
+
         <script>
+            // .addEventListener(): let us run code when we interact with an element, like click a button, it is better than onclick=""
+            const buttonElement = document.querySelector('.js-button');
+
+            // First parameter is the event name
+            // Second parameter is the function to run
+            const eventListener = () => {
+                console.log('click');
+            };
+            buttonElement.addEventListener('click', eventListener);
+
+            // We can remove listeners, but just if we have the listener saved in a varaible previouly
+            buttonElement.removeEventListener('click', eventListener);
+
+            // We can have multiple listener (functions) when an event happens
+            buttonElement.addEventListener('click', () => {
+                console.log('click2');
+            });
+
+
             // This 
             // Here we can do Hoisting which means we can call the function before we declare it
             greeting();
@@ -75,7 +96,7 @@
 
            // Another way to loop throught an array is with the method forEach()
            // For each value it send it as parameter to run de function
-           [
+           const array = [
             'make dinner', 
             'wash dished', 
             'watch youtube'
@@ -90,6 +111,53 @@
 
            //forEach() is prefered than the for loop, is more redable and include another functions
            // There is no break in forEach, if we need break we should use for loops
+
+
+           // Arrow Functions
+           // They work the same way as a regular fuction, they just change the syntax and replace function for =>
+           const arrowFunction = () => {
+            console.log('hello');
+           };
+           arrowFunction();
+
+           const regularFunction = function() {
+            console.log('hello');
+           };
+           regularFunction();
+
+            // In arrow functions, we can remove the () if we just have one parameter
+           const oneParam = param => {
+            console.log(param + 1);
+           };
+           oneParam(2);
+
+           // If we just have one line, we can remove the {}, and the return also 
+           const oneLine = () => { 
+                return 2 + 3; 
+            };    
+            console.log(oneLine());
+
+            const oneLineShortcut = () => 2 + 3; ;
+           console.log(oneLineShortcut());
+
+           // Arrow functions are recommended when we passing a function to another function
+           setInterval(function() {
+            console.log('interval');
+           }, 10000);
+           setInterval(() => {
+            console.log('interval');
+           }, 10000);
+
+           const object2 = {
+            // When we save a function inside an object, we can use arrow functions
+            method: () => {
+
+            },
+            // But the shorthand syntax is preferred
+            method() {
+
+            }
+           };
 
         </script>
     </body>
