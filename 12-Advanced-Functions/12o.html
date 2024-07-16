@@ -1,0 +1,30 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about JS advanced functions to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 12o</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+
+        <script>
+            const removeEgg = (foods) => {
+                let eggsRemoved = 0;
+                return foods.filter((value) => {
+                    if (value === 'egg' && eggsRemoved < 2) {
+                        eggsRemoved ++;
+                        return false;
+                    } else {
+                        return true;
+                    }
+                });
+            }
+
+            console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']));
+        </script>
+    </body>
+</html>

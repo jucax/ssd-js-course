@@ -1,0 +1,27 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about JS advanced functions to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 12p</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <button class="js-button">Start</button>
+
+        <script>
+            const buttonElement = document.querySelector('.js-button');
+
+            const clickButton = () => {
+                setTimeout( () => {
+                    buttonElement.innerHTML = 'Finished!';
+                }, 1000);
+            }
+
+            buttonElement.addEventListener('click', clickButton);
+        </script>
+    </body>
+</html>

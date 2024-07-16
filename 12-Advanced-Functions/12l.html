@@ -1,0 +1,28 @@
+<!--Do this exercises in HTML--> 
+<!--Use what we learned about JS advanced functions to solve this excercises-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Solution 12l</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+
+        <script>
+            const countPositive = (nums) => {
+                let count = 0;
+                nums.forEach ((value) => {
+                    if (value > 0) {
+                        count++;
+                    }
+                });
+                return count;
+            };
+
+            console.log(countPositive([-2, 3, -5, 7, 10]));
+        </script>
+    </body>
+</html>
