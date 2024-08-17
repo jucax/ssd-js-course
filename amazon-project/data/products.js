@@ -656,5 +656,37 @@ const products = [
       "apparel",
       "mens"
     ]
+  },
+  {
+    id: "te28644e9-5323-403f-b7cf-57fde0234a955",
+    image: "images/products/backpack.jpg",
+    name: "Classical Basic Travel Backpack For School",
+    rating: {
+      stars: 4,
+      count: 842
+    },
+    priceCents: 2400,
+    keywords: [
+      "backpack",
+      "school",
+      "bag",
+      "mens"
+    ]
+  },
+  {
+    id: "uw287694e9-5323-342f-b7cf-57fde0234a955",
+    image: "images/products/umbrella.jpg",
+    name: "Windproof Travel Compact Umbrella",
+    rating: {
+      stars: 4.5,
+      count: 953
+    },
+    priceCents: 1000,
+    keywords: [
+      "backpack",
+      "school",
+      "bag",
+      "mens"
+    ]
   }
 ];
