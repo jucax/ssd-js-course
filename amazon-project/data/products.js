@@ -686,7 +686,8 @@ const products = [
       "backpack",
       "school",
       "bag",
-      "mens"
+      "mens",
+      "classes"
     ]
   }
 ];
