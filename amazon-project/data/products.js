@@ -683,11 +683,10 @@ const products = [
     },
     priceCents: 1000,
     keywords: [
-      "backpack",
-      "school",
-      "bag",
-      "mens",
-      "classes"
+      "umbrella",
+      "rain",
+      "compact",
+      "travel"
     ]
   }
 ];
