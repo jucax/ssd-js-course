@@ -681,7 +681,7 @@ const products = [
       stars: 5,
       count: 953
     },
-    priceCents: 1000,
+    priceCents: 1050,
     keywords: [
       "umbrella",
       "rain",
