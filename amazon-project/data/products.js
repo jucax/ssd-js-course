@@ -678,7 +678,7 @@ const products = [
     image: "images/products/umbrella.jpg",
     name: "Windproof Travel Compact Umbrella",
     rating: {
-      stars: 4.5,
+      stars: 5,
       count: 953
     },
     priceCents: 1000,
