@@ -110,6 +110,5 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) => {
         setTimeout(() => {
             addedMessage.classList.remove('added-to-cart-visible');
         }, 2000);
-
     });
 });
