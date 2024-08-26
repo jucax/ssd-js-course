@@ -1,7 +1,10 @@
 // 1 step: Save the data
 // The data comes form products.js
-
 let productsHTML = '';
+
+// import call a variable from other file
+// when we import we can save the varaible with other name to avoid naming conflictions, just use 'name' as 'new name'
+import {cart} from '../data/cart.js';
 
 // 2 step: Create the HTML
 products.forEach((product) => {
@@ -112,3 +115,16 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) => {
         }, 2000);
     });
 });
+
+/* 14-Modules
+To avoid naming issues with variables with the same name
+The modules contain a variable inside a faile so it doesnt conflict with the rest of the variables
+To create a module:
+1. Create files 2. Dont load the file in HTML with <script>
+To connect a module:
+1. Add type="module" 2. Export 3. Import
+
+type="module": allows a script to use variables from other files 
+
+Modules just work when we work with live server, it avoid naming issues and also we dont have to worry abour the order we load the files
+*/
