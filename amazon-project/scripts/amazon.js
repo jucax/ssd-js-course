@@ -5,6 +5,7 @@ let productsHTML = '';
 // import call a variable from other file
 // when we import we can save the varaible with other name to avoid naming conflictions, just use 'name' as 'new name'
 import {cart} from '../data/cart.js';
+import {products} from '../data/products.js';
 
 // 2 step: Create the HTML
 products.forEach((product) => {
@@ -68,51 +69,62 @@ document.querySelector('.js-products-grid').innerHTML = productsHTML;
 // Add to cart button 
 
 // querySelectorAll returns a list with all the objects with that class, so we need to loop through them 
+
+function addToCart(productId) {
+    let matchingItem;
+
+    // We check if the product is already in the cart, so we save it in a matchingItem variable
+    cart.forEach((cartItem) => {
+        if (productId === cartItem.productId) {
+            matchingItem = cartItem;
+        }
+    });
+
+    // Get the quantity from the selector
+    const quantitySelector = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
+
+    // If there is a matchingElement, then we just increase the quantity
+    if (matchingItem) {
+        matchingItem.quantity += quantitySelector;
+    } else {
+        cart.push({
+            productId: productId,
+            quantity: quantitySelector
+        });
+    }
+}
+
+function updateCartQuantity() {
+    // Loop in the quantity of each product in the cart to get the total quantity of products
+    let cartQuantity = 0;
+
+    cart.forEach((cartItem) => {
+        cartQuantity += cartItem.quantity;
+    });
+
+    // Show cartQuantity in the page
+    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+}
+
+function showAddedMessage(productId) {
+    // To show the added message
+    const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`);
+    addedMessage.classList.add('added-to-cart-visible');
+
+    //To make the message disappear with a specific interval
+    setTimeout(() => {
+        addedMessage.classList.remove('added-to-cart-visible');
+    }, 2000);
+}
+
 document.querySelectorAll('.js-add-to-cart').forEach((button) => {
     button.addEventListener('click', () => {
         // Data attribute allows us to attach information to any element, it is an attribute like class="", the syntax is data-[name]=""
         // .dataset gives all the data attributes in that element
         const productId = button.dataset.productId;
-        let matchingItem;
-
-        // We check if the product is already in the cart, so we save it in a matchingItem variable
-        cart.forEach((item) => {
-            if (productId === item.productId) {
-                matchingItem = item;
-            }
-        });
-
-        // Get the quantity from the selector
-        const quantitySelector = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
-
-        // If there is a matchingElement, then we just increase the quantity
-        if (matchingItem) {
-            matchingItem.quantity += quantitySelector;
-        } else {
-            cart.push({
-                productId: productId,
-                quantity: quantitySelector
-            });
-        }
-
-        // Loop in the quantity of each product in the cart to get the total quantity of products
-        let cartQuantity = 0;
-
-        cart.forEach((item) => {
-            cartQuantity += item.quantity;
-        });
-
-        // Show cartQuantity in the page
-        document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-
-        // To show the added message
-        const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`);
-        addedMessage.classList.add('added-to-cart-visible');
-
-        //To make the message disappear with a specific interval
-        setTimeout(() => {
-            addedMessage.classList.remove('added-to-cart-visible');
-        }, 2000);
+        addToCart(productId);
+        updateCartQuantity();
+        showAddedMessage(productId);
     });
 });
 
