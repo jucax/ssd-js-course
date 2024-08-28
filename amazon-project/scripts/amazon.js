@@ -139,4 +139,5 @@ To connect a module:
 type="module": allows a script to use variables from other files 
 
 Modules just work when we work with live server, it avoid naming issues and also we dont have to worry abour the order we load the files
+
 */
