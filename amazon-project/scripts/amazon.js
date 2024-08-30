@@ -4,7 +4,7 @@ let productsHTML = '';
 
 // import call a variable from other file
 // when we import we can save the varaible with other name to avoid naming conflictions, just use 'name' as 'new name'
-import {cart} from '../data/cart.js';
+import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 
 // 2 step: Create the HTML
@@ -69,30 +69,6 @@ document.querySelector('.js-products-grid').innerHTML = productsHTML;
 // Add to cart button 
 
 // querySelectorAll returns a list with all the objects with that class, so we need to loop through them 
-
-function addToCart(productId) {
-    let matchingItem;
-
-    // We check if the product is already in the cart, so we save it in a matchingItem variable
-    cart.forEach((cartItem) => {
-        if (productId === cartItem.productId) {
-            matchingItem = cartItem;
-        }
-    });
-
-    // Get the quantity from the selector
-    const quantitySelector = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
-
-    // If there is a matchingElement, then we just increase the quantity
-    if (matchingItem) {
-        matchingItem.quantity += quantitySelector;
-    } else {
-        cart.push({
-            productId: productId,
-            quantity: quantitySelector
-        });
-    }
-}
 
 function updateCartQuantity() {
     // Loop in the quantity of each product in the cart to get the total quantity of products
