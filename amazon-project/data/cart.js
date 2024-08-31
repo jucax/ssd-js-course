@@ -1,5 +1,5 @@
 // export allows the variable to be use outsite the file
-export const cart = [{
+export let cart = [{
     productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     quantity: 2
 }, {
@@ -30,4 +30,17 @@ export function addToCart(productId) {
             quantity: quantitySelector
         });
     }
+}
+
+export function removeFromCart(productId) {
+    // Create a new cart
+    const newCart = [];
+    // Loop through the old cart
+    cart.forEach((cartItem) => {
+        // Push all to items to the new cart, except the one that we are deleting
+        if (cartItem.productId !== productId) {
+            newCart.push(cartItem);
+        }
+    });
+    cart = newCart;
 }
