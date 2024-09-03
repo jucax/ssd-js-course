@@ -71,3 +71,18 @@ export function calculateCartQuantity() {
         document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
     }
 }
+
+// Function to update the quantity from the checkout page
+export function updateQuantity(productId, newQuantity) {
+    // Identify the product with that Id in the cart
+    let matchingProduct;
+    cart.forEach((cartItem) => {
+        if (cartItem.productId === productId) {
+            matchingProduct = cartItem;
+        }
+    });
+
+    matchingProduct.quantity = newQuantity;
+    saveToStorage();
+
+}
