@@ -8,6 +8,7 @@ let cartSummaryHTML = '';
 
 cart.forEach((cartItem) => {
     const productId = cartItem.productId;
+    updateCheckoutQuantity();
 
     let matchingProduct;
     products.forEach((product) => {
@@ -104,12 +105,24 @@ document.querySelectorAll('.js-delete-link').forEach((link) => {
     link.addEventListener('click', () => {
         const productId = link.dataset.productId;
         removeFromCart(productId);
-        
+
         // Identify which product are we deleting
         const container = document.querySelector(`.js-cart-item-container-${productId}`);
 
         // remove() method remove the DOM element
         container.remove();
+        updateCheckoutQuantity();
     });
 });
 
+function updateCheckoutQuantity() {
+    // Loop in the quantity of each product in the cart to get the total quantity of products for the checkout
+    let checkoutQuantity = 0;
+
+    cart.forEach((cartItem) => {
+        checkoutQuantity += cartItem.quantity;
+    });
+
+    // Show checkoutQuantity in the page
+    document.querySelector('.js-checkout-quantity').innerHTML = checkoutQuantity;
+}
