@@ -57,3 +57,17 @@ export function removeFromCart(productId) {
     cart = newCart;
     saveToStorage();
 }
+
+export function calculateCartQuantity() {
+    // Loop in the quantity of each product in the cart to get the total quantity of products
+    let cartQuantity = 0;
+
+    cart.forEach((cartItem) => {
+        cartQuantity += cartItem.quantity;
+    });
+
+    // Show cartQuantity in the page
+    if (cartQuantity != 0) {
+        document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+    }
+}

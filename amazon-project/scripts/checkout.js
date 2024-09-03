@@ -1,4 +1,4 @@
-import {cart, removeFromCart} from '../data/cart.js';
+import {cart, removeFromCart, calculateCartQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 // ./ represents the current folder
 import {formatCurrency} from './utils/money.js';
@@ -8,7 +8,7 @@ let cartSummaryHTML = '';
 
 cart.forEach((cartItem) => {
     const productId = cartItem.productId;
-    updateCheckoutQuantity();
+    calculateCartQuantity();
 
     let matchingProduct;
     products.forEach((product) => {
@@ -111,18 +111,7 @@ document.querySelectorAll('.js-delete-link').forEach((link) => {
 
         // remove() method remove the DOM element
         container.remove();
-        updateCheckoutQuantity();
+        calculateCartQuantity();
     });
 });
 
-function updateCheckoutQuantity() {
-    // Loop in the quantity of each product in the cart to get the total quantity of products for the checkout
-    let checkoutQuantity = 0;
-
-    cart.forEach((cartItem) => {
-        checkoutQuantity += cartItem.quantity;
-    });
-
-    // Show checkoutQuantity in the page
-    document.querySelector('.js-checkout-quantity').innerHTML = checkoutQuantity;
-}

@@ -4,12 +4,13 @@ let productsHTML = '';
 
 // import call a variable from other file
 // when we import we can save the varaible with other name to avoid naming conflictions, just use 'name' as 'new name'
-import {cart, addToCart} from '../data/cart.js';
+import {cart, addToCart, calculateCartQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 import {formatCurrency} from './utils/money.js';
 
 // 2 step: Create the HTML
 products.forEach((product) => {
+    calculateCartQuantity();
     productsHTML += `
     <div class="product-container">
         <div class="product-image-container">
@@ -71,18 +72,6 @@ document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
 // querySelectorAll returns a list with all the objects with that class, so we need to loop through them 
 
-function updateCartQuantity() {
-    // Loop in the quantity of each product in the cart to get the total quantity of products
-    let cartQuantity = 0;
-
-    cart.forEach((cartItem) => {
-        cartQuantity += cartItem.quantity;
-    });
-
-    // Show cartQuantity in the page
-    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-}
-
 function showAddedMessage(productId) {
     // To show the added message
     const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`);
@@ -100,7 +89,7 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) => {
         // .dataset gives all the data attributes in that element
         const productId = button.dataset.productId;
         addToCart(productId);
-        updateCartQuantity();
+        calculateCartQuantity();
         showAddedMessage(productId);
     });
 });
