@@ -161,7 +161,7 @@ document.querySelectorAll('.js-save-link').forEach((link) => {
         const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`);
         quantityLabel.innerHTML = newQuantity;
 
-        // Update quantity to display in the header
+        // Update quantity to display in the header of the checkout page
         calculateCartQuantity();
     });
 });
