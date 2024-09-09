@@ -681,7 +681,7 @@ export const products = [
       stars: 5,
       count: 953
     },
-    priceCents: 1050,
+    priceCents: 1055,
     keywords: [
       "umbrella",
       "rain",
