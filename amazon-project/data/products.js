@@ -665,7 +665,7 @@ export const products = [
       stars: 4,
       count: 842
     },
-    priceCents: 2400,
+    priceCents: 2430,
     keywords: [
       "backpack",
       "school",
