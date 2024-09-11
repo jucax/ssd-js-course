@@ -1,4 +1,4 @@
-// export allows the variable to be use outsite the file
+// Export allows the variable to be use outsite the file
 export let cart = JSON.parse(localStorage.getItem('cart'));
 
 // If there is nothing in local storage cart is null, and then we save the default values
