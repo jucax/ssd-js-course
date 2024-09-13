@@ -8,14 +8,6 @@ import {formatCurrency} from './utils/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions} from '../data/deliveryOptions.js';
 
-
-// Create function to display delivery dates using DayJS
-const today = dayjs();
-// First parameter is the number of time to add, the second is the length of time 
-const deliveryDay = today.add(7, 'days');
-// The string means the type of format we want to display
-console.log(deliveryDay.format('dddd, MMMM D'));
-
 // Identify the selected product and take the details from the products array
 let cartSummaryHTML = '';
 
