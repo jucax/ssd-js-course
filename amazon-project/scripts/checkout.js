@@ -3,6 +3,18 @@ updateQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 // ./ represents the current folder
 import {formatCurrency} from './utils/money.js';
+// We can use modules with external libraries, but we need the ESM version
+// Default export is when we just need one thing to export, don't write the {}
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
+import {deliveryOptions} from '../data/deliveryOptions.js';
+
+
+// Create function to display delivery dates using DayJS
+const today = dayjs();
+// First parameter is the number of time to add, the second is the length of time 
+const deliveryDay = today.add(7, 'days');
+// The string means the type of format we want to display
+console.log(deliveryDay.format('dddd, MMMM D'));
 
 // Identify the selected product and take the details from the products array
 let cartSummaryHTML = '';
@@ -61,50 +73,46 @@ cart.forEach((cartItem) => {
             <div class="delivery-options-title">
                 Choose a delivery option:
             </div>
-            <div class="delivery-option">
-                <input type="radio" checked
-                class="delivery-option-input"
-                name="delivery-option-${matchingProduct.id}">
-                <div>
-                <div class="delivery-option-date">
-                    Tuesday, June 21
-                </div>
-                <div class="delivery-option-price">
-                    FREE Shipping
-                </div>
-                </div>
-            </div>
-            <div class="delivery-option">
-                <input type="radio"
-                class="delivery-option-input"
-                name="delivery-option-${matchingProduct.id}">
-                <div>
-                <div class="delivery-option-date">
-                    Wednesday, June 15
-                </div>
-                <div class="delivery-option-price">
-                    $4.99 - Shipping
-                </div>
-                </div>
-            </div>
-            <div class="delivery-option">
-                <input type="radio"
-                class="delivery-option-input"
-                name="delivery-option-${matchingProduct.id}">
-                <div>
-                <div class="delivery-option-date">
-                    Monday, June 13
-                </div>
-                <div class="delivery-option-price">
-                    $9.99 - Shipping
-                </div>
-                </div>
-            </div>
+            ${deliveryOptionsHTML(matchingProduct, cartItem)}
             </div>
         </div>
     </div>
     `;
 });
+
+function deliveryOptionsHTML(matchingProduct, cartItem) {
+    let html = '';
+
+    deliveryOptions.forEach((deliveryOption) => {
+        // Configurate the date first
+        const today = dayjs();
+        const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
+        const dateString = deliveryDate.format('dddd, MMMM D');
+
+        // Ternary operation to decide if the price will display as FREE or in dollars
+        const priceString = deliveryOption.priceCents === 0 ? 'FREE' : `$${formatCurrency(deliveryOption.priceCents)} -`;
+
+        // Based on the id 1, 2 or 3 of the delivery option, we checked the input of each item
+        const isChecked = deliveryOption.id == cartItem.deliveryOptionId;
+
+        html +=
+        `<div class="delivery-option">
+            <input type="radio"
+            ${isChecked ? 'checked' : ''}
+            class="delivery-option-input"
+            name="delivery-option-${matchingProduct.id}">
+            <div>
+            <div class="delivery-option-date">
+                ${dateString}
+            </div>
+            <div class="delivery-option-price">
+                ${priceString} Shipping
+            </div>
+            </div>
+        </div>`
+    });
+    return html;
+}
 
 // Insert the new HTML in the container
 document.querySelector('.js-order-summary').innerHTML = cartSummaryHTML;
