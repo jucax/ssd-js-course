@@ -196,4 +196,5 @@ function renderOrderSummary() {
     });
 }
 
+// Initial rendering of the checking list
 renderOrderSummary();
