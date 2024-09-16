@@ -85,6 +85,7 @@ export function updateQuantity(productId, newQuantity) {
         }
     });
 
+    // Get the actual quantity and save it to local storage
     matchingProduct.quantity = newQuantity;
     saveToStorage();
 }
