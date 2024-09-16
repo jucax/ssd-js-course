@@ -100,6 +100,7 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
         }
     });
 
+    // Get the new delivery option and insert it to the varaible, also save it to local storage
     matchingItem.deliveryOptionId = deliveryOptionId;
     saveToStorage();
 }
