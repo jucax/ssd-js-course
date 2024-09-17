@@ -198,3 +198,8 @@ function renderOrderSummary() {
 
 // Initial rendering of the checking list
 renderOrderSummary();
+
+// MVC
+// M = Model: saves and manages data
+// V = View: takes the data and displays 
+// C = Controller: run code when we interact
