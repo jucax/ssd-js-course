@@ -1,5 +1,5 @@
 import {cart, removeFromCart, calculateCartQuantity, updateQuantity, updateDeliveryOption} from '../../data/cart.js';
-import {products} from '../../data/products.js';
+import {products, getProduct} from '../../data/products.js';
 // ./ represents the current folder
 import {formatCurrency} from '../utils/money.js';
 // We can use modules with external libraries, but we need the ESM version
@@ -17,12 +17,7 @@ import {deliveryOptions} from '../../data/deliveryOptions.js';
             const productId = cartItem.productId;
             calculateCartQuantity();
     
-            let matchingProduct;
-            products.forEach((product) => {
-                if (product.id === productId) {
-                    matchingProduct = product;
-                }
-            });
+            const matchingProduct = getProduct(productId);
     
             // Help us get the deliveryId to display the correct date in the header
             const deliveryOptionId = cartItem.deliveryOptionId;
