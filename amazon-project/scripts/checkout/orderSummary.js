@@ -5,7 +5,7 @@ import {formatCurrency} from '../utils/money.js';
 // We can use modules with external libraries, but we need the ESM version
 // Default export is when we just need one thing to export, don't write the {}
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
-import {deliveryOptions} from '../../data/deliveryOptions.js';
+import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js';
     
     // Main function to render all the html when needed
     export function renderOrderSummary() {
@@ -21,12 +21,7 @@ import {deliveryOptions} from '../../data/deliveryOptions.js';
     
             // Help us get the deliveryId to display the correct date in the header
             const deliveryOptionId = cartItem.deliveryOptionId;
-            let deliveryOption;
-            deliveryOptions.forEach((option) => {
-                if (option.id === deliveryOptionId) {
-                    deliveryOption = option;
-                }
-            });
+            const deliveryOption = getDeliveryOption(deliveryOptionId);
     
             const today = dayjs();
             const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
