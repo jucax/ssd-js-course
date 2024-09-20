@@ -6,6 +6,7 @@ import {formatCurrency} from '../utils/money.js';
 // Default export is when we just need one thing to export, don't write the {}
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js';
+import {renderPaymentSummary} from './paymentSummary.js';
     
     // Main function to render all the html when needed
     export function renderOrderSummary() {
@@ -127,7 +128,9 @@ import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js'
     
                 // remove() method remove the DOM element
                 container.remove();
+                // regenerate and recalculate after we delete something
                 calculateCartQuantity();
+                renderPaymentSummary();
             });
         });
     
@@ -181,6 +184,7 @@ import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js'
                 updateDeliveryOption(productId, deliveryOptionId);
                 // Using the main render function to update all the data needed, we are re running the function with recursion
                 renderOrderSummary();
+                renderPaymentSummary();
             });
         });
     }
