@@ -61,5 +61,6 @@ export function renderPaymentSummary() {
         </button>
     `;
 
+    // Selected patment summary div and insert created HTMl
     document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
 }
