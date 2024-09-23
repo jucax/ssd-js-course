@@ -17,13 +17,13 @@ export function renderPaymentSummary() {
         shippingPriceCents += deliveryOption.priceCents;
     });
 
-    // Calculate Total before tax
+    // Calculate Total before tax in cents 
     const totalBeforeTaxCents = productPriceCents + shippingPriceCents;
 
-    // Calculate Estimated tax
+    // Calculate Estimated tax in cents
     const taxCents = totalBeforeTaxCents * 0.1;
 
-    //Calculate Total
+    //Calculate Total in cents
     const totalCents = totalBeforeTaxCents + taxCents;
 
     const paymentSummaryHTML = `
