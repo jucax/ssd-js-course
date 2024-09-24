@@ -123,11 +123,9 @@ import {renderPaymentSummary} from './paymentSummary.js';
                 const productId = link.dataset.productId;
                 removeFromCart(productId);
     
-                // Identify which product are we deleting
-                const container = document.querySelector(`.js-cart-item-container-${productId}`);
-    
-                // remove() method remove the DOM element
-                container.remove();
+                // To update without the element deleted
+                renderOrderSummary();
+                
                 // regenerate and recalculate after we delete something
                 calculateCartQuantity();
                 renderPaymentSummary();
