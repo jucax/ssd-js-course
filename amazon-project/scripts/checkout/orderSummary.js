@@ -5,8 +5,9 @@ import {formatCurrency} from '../utils/money.js';
 // We can use modules with external libraries, but we need the ESM version
 // Default export is when we just need one thing to export, don't write the {}
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
-import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js';
+import {deliveryOptions, getDeliveryOption, calculateDeliveryDate} from '../../data/deliveryOptions.js';
 import {renderPaymentSummary} from './paymentSummary.js';
+import {renderCheckoutHeader} from './checkoutHeader.js';
     
     // Main function to render all the html when needed
     export function renderOrderSummary() {
@@ -24,9 +25,8 @@ import {renderPaymentSummary} from './paymentSummary.js';
             const deliveryOptionId = cartItem.deliveryOptionId;
             const deliveryOption = getDeliveryOption(deliveryOptionId);
     
-            const today = dayjs();
-            const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
-            const dateString = deliveryDate.format('dddd, MMMM D');
+            // Display delivery date with function
+            const dateString = calculateDeliveryDate(deliveryOption);
     
             cartSummaryHTML += `
             <div class="cart-item-container 
@@ -82,10 +82,8 @@ import {renderPaymentSummary} from './paymentSummary.js';
             let html = '';
     
             deliveryOptions.forEach((deliveryOption) => {
-                // Configurate the date first
-                const today = dayjs();
-                const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
-                const dateString = deliveryDate.format('dddd, MMMM D');
+                // Display delivery date with function
+                const dateString = calculateDeliveryDate(deliveryOption);
     
                 // Ternary operation to decide if the price will display as FREE or in dollars
                 const priceString = deliveryOption.priceCents === 0 ? 'FREE' : `$${formatCurrency(deliveryOption.priceCents)} -`;
@@ -122,10 +120,13 @@ import {renderPaymentSummary} from './paymentSummary.js';
             link.addEventListener('click', () => {
                 const productId = link.dataset.productId;
                 removeFromCart(productId);
+
+                // To update the header
+                renderCheckoutHeader();
     
                 // To update without the element deleted
                 renderOrderSummary();
-                
+
                 // regenerate and recalculate after we delete something
                 calculateCartQuantity();
                 renderPaymentSummary();
