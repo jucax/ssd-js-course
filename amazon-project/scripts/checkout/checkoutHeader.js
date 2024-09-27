@@ -1,5 +1,6 @@
 import {cart} from "../../data/cart.js";
 
+// Function to render checkout header with the quantity updated 
 export function renderCheckoutHeader() {
     let cartQuantity = 0;
 
