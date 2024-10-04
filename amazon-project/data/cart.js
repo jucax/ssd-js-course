@@ -1,5 +1,6 @@
 // Export allows the variable to be use outsite the file
 export let cart;
+
 loadFromStorage();
 
 export function loadFromStorage() {
