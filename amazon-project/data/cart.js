@@ -1,3 +1,5 @@
+import {validDeliveryOption} from './deliveryOptions.js';
+
 // Export allows the variable to be use outsite the file
 export let cart;
 
@@ -106,6 +108,16 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
             matchingItem = cartItem;
         }
     });
+
+    // If there is not matching element 
+    if (!matchingItem) {
+        return;
+      }
+
+    // We check if the delivery option is correct
+    if (!validDeliveryOption(deliveryOptionId)) {
+        return;
+    }
 
     // Get the new delivery option and insert it to the varaible, also save it to local storage
     matchingItem.deliveryOptionId = deliveryOptionId;

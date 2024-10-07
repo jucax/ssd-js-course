@@ -26,6 +26,19 @@ export function getDeliveryOption(deliveryOptionId) {
     return deliveryOption || deliveryOptions[0];
 }
 
+// Funtion to check if the option id exist and is valid
+export function validDeliveryOption(deliveryOptionId) {
+    let found = false;
+  
+    deliveryOptions.forEach((option) => {
+      if (option.id === deliveryOptionId) {
+        found = true;
+      }
+    });
+  
+    return found;
+}
+
 function isWeekend(date) {
     const dayOfWeek = date.format('dddd');
     // If the say is weekend
