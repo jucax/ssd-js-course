@@ -70,6 +70,7 @@ describe('Test suite: addToCart', () => {
     });
 });
 
+// New group of tests for removeFromCart function
 describe('Test suite: removeFromCart', () => {
     beforeEach(() => {
       spyOn(localStorage, 'setItem');
@@ -114,6 +115,7 @@ describe('Test suite: removeFromCart', () => {
     });
   });
 
+  // New group of tests for updateDeliveryOption function
   describe('Test suite: updateDeliveryOption', () => {
     beforeEach(() => {
       spyOn(localStorage, 'setItem');
