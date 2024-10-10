@@ -51,6 +51,44 @@ const cart = {
 
         // If we want to acces a function that is inside the object, we need to access the object first
         this.saveToStorage();
+    },
+
+    removeFromCart(productId) {
+        const newCart = [];
+
+        this.cartItems.forEach((cartItem) => {
+            if (cartItem.productId !== productId) {
+                newCart.push(cartItem);
+            }
+        });
+        this.cartItems = newCart;
+        
+        this.saveToStorage();
+    }, 
+
+    calculateCartQuantity() {
+        let cartQuantity = 0;
+    
+        this.cartItems.forEach((cartItem) => {
+            cartQuantity += cartItem.quantity;
+        });
+    
+        if (cartQuantity != 0) {
+            document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+        }
+    },
+
+    updateQuantity(productId, newQuantity) {
+        let matchingProduct;
+
+        cart.forEach((cartItem) => {
+            if (cartItem.productId === productId) {
+                matchingProduct = cartItem;
+            }
+        });
+    
+        matchingProduct.quantity = newQuantity;
+        saveToStorage();
     }
 };
 
@@ -60,46 +98,6 @@ loadFromStorage();
 
 
 
-// Export the finction so we can use it in other file
-export function addToCart(productId) {
-    let matchingItem;
-
-    // We check if the product is already in the cart, so we save it in a matchingItem variable
-    cart.forEach((cartItem) => {
-        if (productId === cartItem.productId) {
-            matchingItem = cartItem;
-        }
-    });
-
-    // Get the quantity from the selector
-    const quantitySelector = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
-
-    // If there is a matchingElement, then we just increase the quantity
-    if (matchingItem) {
-        matchingItem.quantity += quantitySelector;
-    } else {
-        cart.push({
-            productId: productId,
-            quantity: quantitySelector,
-            deliveryOptionId: '1'
-        });
-    }
-    saveToStorage();
-}
-
-export function removeFromCart(productId) {
-    // Create a new cart
-    const newCart = [];
-    // Loop through the old cart
-    cart.forEach((cartItem) => {
-        // Push all to items to the new cart, except the one that we are deleting
-        if (cartItem.productId !== productId) {
-            newCart.push(cartItem);
-        }
-    });
-    cart = newCart;
-    saveToStorage();
-}
 
 export function calculateCartQuantity() {
     // Loop in the quantity of each product in the cart to get the total quantity of products
