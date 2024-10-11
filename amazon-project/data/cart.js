@@ -39,16 +39,13 @@ export function addToCart(productId) {
         }
     });
 
-    // Get the quantity from the selector
-    const quantitySelector = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
-
     // If there is a matchingElement, then we just increase the quantity
     if (matchingItem) {
-        matchingItem.quantity += quantitySelector;
+        matchingItem.quantity += 1;
     } else {
         cart.push({
             productId: productId,
-            quantity: quantitySelector,
+            quantity: 1,
             deliveryOptionId: '1'
         });
     }
