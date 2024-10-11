@@ -130,4 +130,4 @@ console.log(businessCart);
 
 // Procedural Programming: a set of step-by-step instructions, functions
 // Object-Oriented Programming (OOP): organize our code into object
-// OOP - Tries to represent a real world
+    // OOP - Tries to represent a real world
