@@ -1,10 +1,17 @@
 import {validDeliveryOption} from './deliveryOptions.js';
 
 class Cart {
-    // Classes use diferent sintax than the objects
-    cartItems = undefined;
+    // Classes use diferent sintax than the objects, we dont need to use undefined
+    cartItems;
     // New property, instead of a parameter for functions
-    localStorageKey = undefined;
+    localStorageKey;
+
+    // Its like a normal method, but it run the code automatically, so is good for setup code
+    constructor(localStorageKey) {
+        // Instead of insert the localStorageKey as a parameter, we asign it after the object generation, but before we load to local storage
+        this.localStorageKey = localStorageKey;
+        this.loadFromStorage();
+    }
 
     loadFromStorage() {
         this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey));
@@ -112,15 +119,9 @@ class Cart {
 
 // To generate an object with a class we use a similar sintax, but include the word "new"
 // Objects generated from a class are called instance
-const cart = new Cart();
-const businessCart = new Cart();
-
-// Instead of insert the localStorageKey as a parameter, we asign it after the object generation, but before we load to local storage
-cart.localStorageKey = 'cart-oop';
-businessCart.localStorageKey = 'cart-business';
-
-cart.loadFromStorage();
-businessCart.loadFromStorage();
+// Because we have a constructor we can pass some values to the class
+const cart = new Cart('cart-oop');
+const businessCart = new Cart('cart-business');
 
 console.log(cart);
 console.log(businessCart);
