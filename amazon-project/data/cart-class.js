@@ -4,17 +4,20 @@ class Cart {
     // Classes use diferent sintax than the objects, we dont need to use undefined
     cartItems;
     // New property, instead of a parameter for functions
-    localStorageKey;
+    // # means that the property is private, so it can only be use inside this class
+    #localStorageKey;
 
     // Its like a normal method, but it run the code automatically, so is good for setup code
     constructor(localStorageKey) {
         // Instead of insert the localStorageKey as a parameter, we asign it after the object generation, but before we load to local storage
-        this.localStorageKey = localStorageKey;
-        this.loadFromStorage();
+        this.#localStorageKey = localStorageKey;
+        this.#loadFromStorage();
     }
 
-    loadFromStorage() {
-        this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey));
+    // We can make a method private with the # as well
+    #loadFromStorage() {
+        this.cartItems = JSON.parse(localStorage.getItem(this.
+            #localStorageKey));
     
         if (!this.cartItems) {
             this.cartItems = [{
@@ -30,7 +33,7 @@ class Cart {
     }
 
     saveToStorage() {
-        localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+        localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
     }
 
     addToCart(productId) {
