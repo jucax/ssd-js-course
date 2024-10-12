@@ -1,3 +1,5 @@
+import {formatCurrency} from '';
+
 export function getProduct(productId) {
   let matchingProduct;
   products.forEach((product) => {
@@ -9,6 +11,51 @@ export function getProduct(productId) {
   return matchingProduct;
 }
 
+class Product {
+  id;
+  image;
+  name;
+  rating;
+  priceCents;
+
+  // This is called converting an object into a class, so we have the same object as before, bit with the extra features to be in a class
+  constructor(productDetails) {
+    this.id = productDetails.id;
+    this.image = productDetails.image;
+    this.name = productDetails.name;
+    this.rating = productDetails.rating;
+    this.priceCents = productDetails.priceCents;
+  }
+
+  // We can move the process of calculate the url from the HTML and do it here thanks to the features of classes
+  getStarsUrl() {
+    return `images/ratings/rating-${this.rating.stars * 10}.png`;
+  }
+
+  getPrice() {
+    return `$${formatCurrency(this.priceCents)}`;
+  }
+}
+
+// We can give a constructor an object to get the details of each product
+const product1 = new Product({
+  id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+  image: "images/products/athletic-cotton-socks-6-pairs.jpg",
+  name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
+  rating: {
+    stars: 4.5,
+    count: 87
+  },
+  priceCents: 1090,
+  keywords: [
+    "socks",
+    "sports",
+    "apparel"
+  ]
+});
+console.log(product1);
+
+// .map loop throught the array and run a function for each value and then replace the value in the array with the thing we return
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -24,8 +71,7 @@ export const products = [
       "sports",
       "apparel"
     ]
-  },
-  {
+  },{
     id: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
     image: "images/products/intermediate-composite-basketball.jpg",
     name: "Intermediate Size Basketball",
@@ -700,4 +746,8 @@ export const products = [
       "travel"
     ]
   }
-];
+].map((productDetails) => {
+  return new Product(productDetails);
+});
+
+console.log(products);
