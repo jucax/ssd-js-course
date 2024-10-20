@@ -18,7 +18,7 @@ class Product {
   rating;
   priceCents;
 
-  // This is called converting an object into a class, so we have the same object as before, bit with the extra features to be in a class
+  // This is called converting an object into a class, so we have the same object as before, but with the extra features to be in a class
   constructor(productDetails) {
     this.id = productDetails.id;
     this.image = productDetails.image;
