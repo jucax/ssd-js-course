@@ -37,6 +37,37 @@ class Product {
   }
 }
 
+// It is an specific type of product so we need to inhered all the properties
+class Clothing extends Product {
+  // We can add extra properties
+  sizeChartLink;
+
+  constructor(productDetails) {
+    //super() calls the constructor of the parent class so we dont need to write everything again
+    super(productDetails);
+    this.sizeChartLink = productDetails.sizeChartLink;
+  }
+}
+const tshirt = new Clothing({
+  id: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
+  image: "images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",
+  name: "Adults Plain Cotton T-Shirt - 2 Pack",
+  rating: {
+    stars: 4.5,
+    count: 56
+  },
+  priceCents: 799,
+  keywords: [
+    "tshirts",
+    "apparel",
+    "mens"
+  ],
+  type: "clothing",
+  sizeChartLink: "images/clothing-size-chart.png"
+});
+console.log(tshirt);
+console.log(tshirt.getPrice());
+
 // .map loop throught the array and run a function for each value and then replace the value in the array with the thing we return
 export const products = [
   {
@@ -732,3 +763,4 @@ export const products = [
   return new Product(productDetails);
 });
 
+// Inheritance allow us to get the properties from other class and use them in other class, so we dont repeat code
