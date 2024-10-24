@@ -35,6 +35,11 @@ class Product {
   getPrice() {
     return `$${formatCurrency(this.priceCents)}`;
   }
+
+  extraInfoHTML() {
+    // Because we dont want to add anything if it is not clothing
+    return '';
+  }
 }
 
 // It is an specific type of product so we need to inhered all the properties
@@ -47,6 +52,18 @@ class Clothing extends Product {
     super(productDetails);
     this.sizeChartLink = productDetails.sizeChartLink;
   }
+
+  // We use method overriding, because we are re defining a method from the parent class
+  extraInfoHTML() {
+    // super.extraInfoHTML(); would call to the parent class method
+    return `
+      <a href="${this.sizeChartLink}" target="_blank">
+        Size chart
+      </a>
+    `;
+  }
+
+  // In the main HTML we are using polymorphism which means that we are using a mehtod without knowing which class we are using
 }
 const tshirt = new Clothing({
   id: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
@@ -62,6 +79,7 @@ const tshirt = new Clothing({
     "apparel",
     "mens"
   ],
+  // discriminator property tell us which class to use for each object
   type: "clothing",
   sizeChartLink: "images/clothing-size-chart.png"
 });
@@ -760,6 +778,10 @@ export const products = [
     ]
   }
 ].map((productDetails) => {
+  // We check if we convert to clothing
+  if (productDetails.type === 'clothing') {
+    return new Clothing(productDetails);
+  }
   return new Product(productDetails);
 });
 
