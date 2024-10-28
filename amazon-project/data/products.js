@@ -11,7 +11,7 @@ export function getProduct(productId) {
   return matchingProduct;
 }
 
-class Product {
+export class Product {
   id;
   image;
   name;
@@ -43,7 +43,7 @@ class Product {
 }
 
 // It is an specific type of product so we need to inhered all the properties
-class Clothing extends Product {
+export class Clothing extends Product {
   // We can add extra properties
   sizeChartLink;
 
@@ -66,7 +66,7 @@ class Clothing extends Product {
   // In the main HTML we are using polymorphism which means that we are using a mehtod without knowing which class we are using
 }
 
-class Appliance extends Product {
+export class Appliance extends Product {
   instructionsLink;
   warrantyLink;
 
