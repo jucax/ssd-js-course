@@ -123,7 +123,7 @@ class Cart {
 // To generate an object with a class we use a similar sintax, but include the word "new"
 // Objects generated from a class are called instance
 // Because we have a constructor we can pass some values to the class
-const cart = new Cart('cart-oop');
+export const cart = new Cart('cart-oop');
 const businessCart = new Cart('cart-business');
 
 console.log(cart);
