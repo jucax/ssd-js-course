@@ -14,4 +14,5 @@ xhr.open('GET', 'https://supersimplebackend.dev');
 xhr.send();
 
 // This messages works with the request-response cycle
+
 // We can do something with the response with .response, it is asynchronous code, so it doesn't wait for the last lines to execute
