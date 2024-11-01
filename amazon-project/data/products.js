@@ -89,6 +89,7 @@ export class Appliance extends Product {
 }
 
 // .map loop throught the array and run a function for each value and then replace the value in the array with the thing we return
+/*
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -800,6 +801,33 @@ export const products = [
   }
   return new Product(productDetails);
 });
+*/
+
+// Get the products from the backend
+export let products = [];
+
+export function loadProducts() {
+  const xhr = new XMLHttpRequest();
+
+  // We can get a JSON from the backend and convert it as we did with the normal objects
+  xhr.addEventListener('load', () => {
+    products = JSON.parse(xhr.response).map((productDetails) => {
+      // We check if we convert to clothing
+      if (productDetails.type === 'clothing') {
+        return new Clothing(productDetails);
+      } else if (productDetails.type === 'appliance') {
+        return new Appliance(productDetails);
+      }
+      return new Product(productDetails);
+    });
+
+    console.log('load products');
+  });
+
+  xhr.open('GET', 'https://supersimplebackend.dev/products');
+  xhr.send();
+}
+
 
 // Inheritance allow us to get the properties from other class and use them in other class, so we dont repeat code
 

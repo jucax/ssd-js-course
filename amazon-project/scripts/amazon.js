@@ -5,8 +5,10 @@ let productsHTML = '';
 // import call a variable from other file
 // when we import we can save the varaible with other name to avoid naming conflictions, just use 'name' as 'new name'
 import {cart, addToCart, calculateCartQuantity} from '../data/cart.js';
-import {products} from '../data/products.js';
+import {products, loadProducts} from '../data/products.js';
 import {formatCurrency} from './utils/money.js';
+
+loadProducts();
 
 // 2 step: Create the HTML
 products.forEach((product) => {
