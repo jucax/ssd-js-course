@@ -810,6 +810,7 @@ export function loadProducts() {
   const xhr = new XMLHttpRequest();
 
   // We can get a JSON from the backend and convert it as we did with the normal objects
+  
   xhr.addEventListener('load', () => {
     products = JSON.parse(xhr.response).map((productDetails) => {
       // We check if we convert to clothing
