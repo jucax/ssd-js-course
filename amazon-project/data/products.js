@@ -806,7 +806,7 @@ export const products = [
 // Get the products from the backend
 export let products = [];
 
-export function loadProducts() {
+export function loadProducts(fun) {
   const xhr = new XMLHttpRequest();
 
   // We can get a JSON from the backend and convert it as we did with the normal objects
@@ -822,7 +822,9 @@ export function loadProducts() {
       return new Product(productDetails);
     });
 
+    // We wait for the request and then ren the callback
     console.log('load products');
+    fun();
   });
 
   xhr.open('GET', 'https://supersimplebackend.dev/products');
