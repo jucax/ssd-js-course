@@ -123,3 +123,18 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
 
 // Procedural Programming: a set of step-by-step instructions, functions
 // Object-Oriented Programming (OOP): organize our code into object
+
+
+export function loadCart(fun) {
+    const xhr = new XMLHttpRequest();
+  
+    // We can get a JSON from the backend and convert it as we did with the normal objects
+    
+    xhr.addEventListener('load', () => {
+      console.log(xhr.response);
+      fun();
+    });
+  
+    xhr.open('GET', 'https://supersimplebackend.dev/cart');
+    xhr.send();
+  }
