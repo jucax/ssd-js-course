@@ -7,8 +7,28 @@ import {loadCart} from "../data/cart.js";
 // Another sintax that runs all the code inside the file, without importing anything
 // import '../data/cart-class.js';
 
+// async make the function return a promise
+// await let us wait for a promise to finish
+async function loadPage() {
+    // Let us wait for asynchonous code as normal code
+    await loadProductsFetch();
+
+    // We can use await when we are inside async
+    await new Promise((resolve) => {
+        loadCart(() => {
+            resolve()
+        });
+    });
+
+    renderCheckoutHeader();
+    // Initial rendering of the checking list
+    renderOrderSummary();
+    renderPaymentSummary();
+}
+loadPage();
 
 // Sometimes is better to use promise.all to execute both promises at the same time
+/*
 Promise.all([
     // It return a promise, so make the code cleaner
     loadProductsFetch(),
@@ -24,7 +44,7 @@ Promise.all([
     renderOrderSummary();
     renderPaymentSummary();
 });
-
+*/
 
 /*
 // The promise run the inner function inmediately
