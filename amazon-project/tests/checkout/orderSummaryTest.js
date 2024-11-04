@@ -1,6 +1,6 @@
 import {renderOrderSummary} from '../../scripts/checkout/orderSummary.js';
 import {loadFromStorage, cart} from '../../data/cart.js';
-import {loadProducts} from '../../data/products.js';
+import {loadProducts, loadProductsFetch} from '../../data/products.js';
 
 describe('Test suite: renderOrderSummary', () => {
   const productId1 = 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
@@ -8,7 +8,7 @@ describe('Test suite: renderOrderSummary', () => {
 
   // Done is a function provided by Jasmine to wait for the next step once we use the done() function
   beforeAll((done) => {
-    loadProducts(() => {
+    loadProductsFetch().then(() => {
       done();
     });
   });

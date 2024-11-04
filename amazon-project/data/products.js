@@ -806,6 +806,40 @@ export const products = [
 // Get the products from the backend
 export let products = [];
 
+
+// fetch() make an http request, but using promise
+export function loadProductsFetch() {
+  // this create a promise, so we can use then(), and will save the response in the parameter
+  const promise = fetch(
+    'https://supersimplebackend.dev/products'
+  ).then((response) => {
+    // If we want to get the json attached to the response we need json(), and then return the document so we can use it later in other then()
+    return response.json();
+  }).then((productsData) => {
+    products = productsData.map((productDetails) => {
+      // We check if we convert to clothing
+      if (productDetails.type === 'clothing') {
+        return new Clothing(productDetails);
+      } else if (productDetails.type === 'appliance') {
+        return new Appliance(productDetails);
+      }
+      return new Product(productDetails);
+    });
+
+    console.log('load products');
+  });
+
+  return promise;
+}
+
+/*
+// We cant even attach more steps from outsite
+loadProductsFetch().then(() => {
+  console.log('next step');
+});
+*/
+
+
 export function loadProducts(fun) {
   const xhr = new XMLHttpRequest();
 

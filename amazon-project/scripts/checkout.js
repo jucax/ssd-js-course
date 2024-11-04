@@ -1,7 +1,7 @@
 import {renderCheckoutHeader} from "./checkout/checkoutHeader.js";
 import {renderOrderSummary} from "./checkout/orderSummary.js";
 import {renderPaymentSummary} from "./checkout/paymentSummary.js";
-import {loadProducts} from "../data/products.js";
+import {loadProducts, loadProductsFetch} from "../data/products.js";
 import {loadCart} from "../data/cart.js";
 // import '../data/backend-practice.js';
 // Another sintax that runs all the code inside the file, without importing anything
@@ -10,12 +10,8 @@ import {loadCart} from "../data/cart.js";
 
 // Sometimes is better to use promise.all to execute both promises at the same time
 Promise.all([
-    new Promise((resolve) => {
-        loadProducts(() => {
-            resolve('value1');
-        });
-    
-    }),
+    // It return a promise, so make the code cleaner
+    loadProductsFetch(),
     new Promise((resolve) => {
         loadCart(() => {
             resolve()
