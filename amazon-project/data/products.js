@@ -861,9 +861,15 @@ export function loadProducts(fun) {
     fun();
   });
 
+  // We have to think about possible errors and how to handle them, so we create a separate call back
+  xhr.addEventListener('error', (error) => {
+    console.log('Unexpected error. Please try again later.');
+  });
+
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();
 }
+loadProducts();
 
 
 // Inheritance allow us to get the properties from other class and use them in other class, so we dont repeat code
