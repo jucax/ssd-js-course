@@ -10,15 +10,28 @@ import {loadCart} from "../data/cart.js";
 // async make the function return a promise
 // await let us wait for a promise to finish
 async function loadPage() {
-    // Let us wait for asynchonous code as normal code
-    await loadProductsFetch();
+    try {
+        // We can manually create an error with throw
+        //throw 'error 1'
 
-    // We can use await when we are inside async
-    await new Promise((resolve) => {
-        loadCart(() => {
-            resolve()
+        // Let us wait for asynchonous code as normal code
+        await loadProductsFetch();
+
+        // We can use await when we are inside async
+        await new Promise((resolve, reject) => {
+            // throw 'error 2'
+            loadCart(() => {
+                // We can create an error in the future
+                // reject('error 3')
+                resolve()
+            });
         });
-    });
+
+        // We can run other code whenever we catch an error
+    } catch (error) {
+        console.log('Unexpected error. Please try again later.');
+    }
+
 
     renderCheckoutHeader();
     // Initial rendering of the checking list

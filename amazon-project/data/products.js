@@ -827,6 +827,8 @@ export function loadProductsFetch() {
     });
 
     console.log('load products');
+  }).catch((error) => {
+    console.log('Unexpected error. Please try again later.');
   });
 
   return promise;
@@ -858,7 +860,6 @@ export function loadProducts(fun) {
 
     // We wait for the request and then ren the callback
     console.log('load products');
-    fun();
   });
 
   // We have to think about possible errors and how to handle them, so we create a separate call back
@@ -869,7 +870,6 @@ export function loadProducts(fun) {
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();
 }
-loadProducts();
 
 
 // Inheritance allow us to get the properties from other class and use them in other class, so we dont repeat code
