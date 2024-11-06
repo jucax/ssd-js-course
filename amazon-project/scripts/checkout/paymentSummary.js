@@ -2,6 +2,7 @@ import {cart} from "../../data/cart.js";
 import {getProduct} from "../../data/products.js";
 import {getDeliveryOption} from "../../data/deliveryOptions.js";
 import {formatCurrency} from "../utils/money.js";
+import {addOrder} from '../../data/orders.js'
 
 export function renderPaymentSummary() {
     let productPriceCents = 0;
@@ -65,11 +66,45 @@ export function renderPaymentSummary() {
             </div>
         </div>
 
-        <button class="place-order-button button-primary">
+        <button class="place-order-button button-primary
+        js-place-order">
             Place your order
         </button>
     `;
 
     // Selected patment summary div and insert created HTMl
     document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
+
+    document.querySelector('.js-place-order').addEventListener('click', async () => {
+        try {
+            // We are going to do a request to the backend
+            const response = await fetch('https://supersimplebackend.dev/orders', {
+                // Type of request
+                method: 'POST',
+                // More info of the request
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                // Actual data to send, in this case the cart array
+                body: JSON.stringify({
+                    cart: cart
+                })
+            });
+
+            // If we want to wait to the response created in the backend to finish
+            const order = await response.json();
+            addOrder(order);
+        } catch(error) {
+            console.log('Unexpected error. Try again later');
+        }
+        
+        // If we want to open the orders.html file, so we can change what we display
+        window.location.href = 'orders.html';
+    });
 }
+
+// Types of requests
+// GET = get something
+// POST = create something
+// PUT = update something
+// DELETE = delete something
