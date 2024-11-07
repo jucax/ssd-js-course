@@ -2,7 +2,7 @@ import {renderCheckoutHeader} from "./checkout/checkoutHeader.js";
 import {renderOrderSummary} from "./checkout/orderSummary.js";
 import {renderPaymentSummary} from "./checkout/paymentSummary.js";
 import {loadProducts, loadProductsFetch} from "../data/products.js";
-import {loadCart} from "../data/cart.js";
+import {loadCart, loadCartFetch} from "../data/cart.js";
 // import '../data/backend-practice.js';
 // Another sintax that runs all the code inside the file, without importing anything
 // import '../data/cart-class.js';
@@ -18,6 +18,7 @@ async function loadPage() {
         await loadProductsFetch();
 
         // We can use await when we are inside async
+        /*
         await new Promise((resolve, reject) => {
             // throw 'error 2'
             loadCart(() => {
@@ -26,6 +27,9 @@ async function loadPage() {
                 resolve()
             });
         });
+        */
+
+        await loadCartFetch();
 
         // We can run other code whenever we catch an error
     } catch (error) {
