@@ -15,7 +15,10 @@ async function loadPage() {
         //throw 'error 1'
 
         // Let us wait for asynchonous code as normal code
-        await loadProductsFetch();
+        await Promise.all([
+            await loadProductsFetch(),
+            await loadCartFetch()
+        ]);
 
         // We can use await when we are inside async
         /*
@@ -29,7 +32,7 @@ async function loadPage() {
         });
         */
 
-        await loadCartFetch();
+        
 
         // We can run other code whenever we catch an error
     } catch (error) {

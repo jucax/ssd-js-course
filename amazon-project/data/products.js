@@ -860,6 +860,7 @@ export function loadProducts(fun) {
 
     // We wait for the request and then ren the callback
     console.log('load products');
+    fun();
   });
 
   // We have to think about possible errors and how to handle them, so we create a separate call back
