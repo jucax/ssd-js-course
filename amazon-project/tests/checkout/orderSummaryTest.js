@@ -7,10 +7,8 @@ describe('Test suite: renderOrderSummary', () => {
   const productId2 = '15b6fc6f-327a-4ec4-896f-486349e85a3d';
 
   // Done is a function provided by Jasmine to wait for the next step once we use the done() function
-  beforeAll((done) => {
-    loadProductsFetch().then(() => {
-      done();
-    });
+  beforeAll(async () => {
+    await loadProductsFetch();
   });
 
   beforeEach(() => {
