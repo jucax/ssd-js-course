@@ -17,6 +17,7 @@ export class Product {
   name;
   rating;
   priceCents;
+  keywords;
 
   // This is called converting an object into a class, so we have the same object as before, but with the extra features to be in a class
   constructor(productDetails) {
@@ -25,6 +26,7 @@ export class Product {
     this.name = productDetails.name;
     this.rating = productDetails.rating;
     this.priceCents = productDetails.priceCents;
+    this.keywords = productDetails.keywords;
   }
 
   // We can move the process of calculate the url from the HTML and do it here thanks to the features of classes
