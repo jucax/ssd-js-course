@@ -1,4 +1,4 @@
-import {cart} from "../../data/cart.js";
+import {cart, resetCart} from "../../data/cart.js";
 import {getProduct} from "../../data/products.js";
 import {getDeliveryOption} from "../../data/deliveryOptions.js";
 import {formatCurrency} from "../utils/money.js";
@@ -97,7 +97,10 @@ export function renderPaymentSummary() {
         } catch(error) {
             console.log('Unexpected error. Try again later');
         }
-        
+
+        // Extra feature to make the cart empty
+        resetCart()
+
         // If we want to open the orders.html file, so we can change what we display
         window.location.href = 'orders.html';
     });
